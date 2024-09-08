@@ -1,8 +1,14 @@
+// Include required header files
+
 #include <stdio.h>
 #include <stdint.h>
 
+// Setup up memory
+
 #define MAX_MEMORY (1<<16)
 uint16_t memory[MAX_MEMORY]; /* 65536 locations*/
+
+// Setup registers
 
 enum 
 {
@@ -20,6 +26,8 @@ enum
 };
 
 uint16_t reg[R_COUNT];
+
+// Setup opcode as instruction set of LC-3
 
 enum
 {
@@ -41,12 +49,16 @@ enum
     OP_TRAP    /* execute trap*/
 };
 
+// Setup conditional flags
+
 enum
 {
     FLA_POS = 1 << 0, /* P */
     FLA_ZRO = 1 << 1, /* Z */
     FLA_NEG = 1 << 2  /* N */
 };
+
+// Main function code
 
 int main(void)
 {
