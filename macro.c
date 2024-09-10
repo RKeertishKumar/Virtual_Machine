@@ -62,6 +62,22 @@ enum
 
 int main(int argc, const char* argv[])
 {
+    /*Load arguements*/
+    if (argc < 2)
+    {
+        /* show usage string*/
+        printf("lc3 [image-file1] ... \n");
+        exit(2);
+    }
+
+    for (int j = 1; j < argc; ++j)
+    {
+        if(!read_image(argv[j]))
+        {
+            printf("failed to load image: %s\n", argv[j]);
+            exit(1);
+        }
+    }
     /*Initial the conditional flag to Z as atleast one flag should be set at a time*/
     reg[R_COND] = FLA_ZRO;
 
@@ -113,7 +129,7 @@ int main(int argc, const char* argv[])
             case OP_RTI:
             default:
             break;
-            
+
         }
     }
 
