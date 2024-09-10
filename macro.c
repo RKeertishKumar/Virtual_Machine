@@ -58,11 +58,19 @@ enum
     FLA_NEG = 1 << 2  /* N */
 };
 
-// Main function code
+// Main function loop code
 
-int main(void)
+int main(int argc, const char* argv[])
 {
-    uint16_t x = 9;
-    printf("%u\n",FLA_ZRO);
+    /*Initial the conditional flag to Z as atleast one flag should be set at a time*/
+    reg[R_COND] = FLA_ZRO;
+
+    /*Set the PC to staring position*/
+    /*0x3000 is default*/
+    enum {PC_START = 0x3000};
+
+    reg[R_PC] = PC_START;
+
+    printf("%d\n",PC_START);
     return 0;
 }
